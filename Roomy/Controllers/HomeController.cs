@@ -8,9 +8,21 @@ namespace Roomy.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            //throw new Exception();
+            return View();
+        }
+
+        [Route("/error/{code?}")]
+        public IActionResult Error(string code)
+        {
             return View();
         }
     }

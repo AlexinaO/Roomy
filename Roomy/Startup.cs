@@ -40,6 +40,11 @@ namespace Roomy
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/error");
+                app.UseStatusCodePagesWithRedirects("/error/{0}");
+            }
 
             app.UseStaticFiles();
 
@@ -75,6 +80,11 @@ namespace Roomy
 
         private void ConfigureRoute(IRouteBuilder routeBuilder)
         {
+            routeBuilder.MapRoute(
+                name: "apropos",
+                template: "a-propos-de",
+                defaults: new { controller = "Home", action = "About" });
+
             routeBuilder.MapRoute(
                 name: "Default",
                 template: "{controller=Home}/{action=Index}/{id?}");
