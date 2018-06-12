@@ -117,10 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="birthdate" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="confirm_password" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
   <data name="create_contact_new_user" xml:space="preserve">
     <value>Nouvel utilisateur</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>Adresse email</value>
+  </data>
+  <data name="firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="major" xml:space="preserve">
+    <value>Vous devez avoir plus de {1} ans</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="required" xml:space="preserve">
+    <value>Le {0} champ est obligatoire</value>
   </data>
 </root>

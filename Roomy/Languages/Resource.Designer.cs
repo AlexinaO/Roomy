@@ -61,6 +61,24 @@ namespace Roomy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date de naissance.
+        /// </summary>
+        public static string birthdate {
+            get {
+                return ResourceManager.GetString("birthdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string confirm_password {
+            get {
+                return ResourceManager.GetString("confirm_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nouvel utilisateur.
         /// </summary>
         public static string create_contact_new_user {
@@ -75,6 +93,51 @@ namespace Roomy.Languages {
         public static string email {
             get {
                 return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prénom.
+        /// </summary>
+        public static string firstname {
+            get {
+                return ResourceManager.GetString("firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom.
+        /// </summary>
+        public static string lastname {
+            get {
+                return ResourceManager.GetString("lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez avoir plus de {1} ans.
+        /// </summary>
+        public static string major {
+            get {
+                return ResourceManager.GetString("major", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mot de passe.
+        /// </summary>
+        public static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le {0} champ est obligatoire.
+        /// </summary>
+        public static string required {
+            get {
+                return ResourceManager.GetString("required", resourceCulture);
             }
         }
     }

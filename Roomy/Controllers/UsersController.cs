@@ -18,6 +18,10 @@ namespace Roomy.Controllers
         [HttpPost]
         public IActionResult Create(User model)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View();
         }
     }
