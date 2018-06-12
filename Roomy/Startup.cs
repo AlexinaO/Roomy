@@ -29,6 +29,8 @@ namespace Roomy
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Languages");
+
             services.AddMvc();
 
         }
@@ -51,8 +53,8 @@ namespace Roomy
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(
-                    culture: this.Configuration.GetSection("languages")["langue"],
-                    uiCulture: this.Configuration.GetSection("languages")["langue"])
+                    culture: "en-US",//this.Configuration.GetSection("languages")["langue"],
+                    uiCulture: "en-US") //this.Configuration.GetSection("languages")["langue"])
             });
 
             app.Use(async(context, next) => {
