@@ -1,3 +1,7 @@
 ﻿.input-validation-error{
     border-left: solid red 3px;
 }
+
+.validation-summary-valid{
+    display: none;
+}
