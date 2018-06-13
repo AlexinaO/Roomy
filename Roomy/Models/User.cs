@@ -38,6 +38,7 @@ namespace Roomy.Models
         [DataType(DataType.Password)]
         [Display(Name = "confirm_password", ResourceType = typeof(Resource))]
         [Compare("Password", ErrorMessage = "Confirmation du mot de passe incorrect.")]
+        [NotMapped]
         public string ConfirmPassword { get; set; }
 
         [DataType(DataType.Date)]
