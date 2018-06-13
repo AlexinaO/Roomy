@@ -11,9 +11,10 @@ using System;
 namespace Roomy.Migrations
 {
     [DbContext(typeof(RoomyDbContext))]
-    partial class RoomyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180613103524_AddFiles")]
+    partial class AddFiles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

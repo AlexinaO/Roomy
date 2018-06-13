@@ -12,52 +12,62 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Label)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Capacity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateDate)
-                </th>
-                
+            <th>
+                @Html.DisplayNameFor(model => model.Label)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
+            <environment names="Development">
+                <th>Suppr.</th>
+            </environment>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Label)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Lastname)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID"><i class="glyphicon glyphicon-edit"></i></a> |
-                <a asp-action="Details" asp-route-id="@item.ID"><i class="glyphicon glyphicon-search"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.ID"><i class="glyphicon glyphicon-trash"></i></a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Label)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Lastname)
+                </td>
+                <environment names="Development">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deleted)
+                    </td>
+                </environment>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID"><i class="glyphicon glyphicon-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.ID"><i class="glyphicon glyphicon-search"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

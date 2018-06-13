@@ -38,5 +38,7 @@ namespace Roomy.Models
         public User User { get; set; }
 
         public int UserID { get; set; }
+
+        public ICollection<File> Files { get; set; }
     }
 }
