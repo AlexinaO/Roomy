@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,12 +9,10 @@ using Roomy.Models;
 
 namespace Roomy.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
-        private RoomyDbContext db;
-        public UsersController(RoomyDbContext db)
+        public UsersController(RoomyDbContext db) : base(db)
         {
-            this.db = db;
         }
 
         [HttpGet]
@@ -23,12 +22,15 @@ namespace Roomy.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(User model)
         {
             if (ModelState.IsValid)
             {
                 await db.Users.AddAsync(model);
                 await db.SaveChangesAsync();
+                DisplayMessage("Utilisateur enregistré", MessageType.OK);
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }

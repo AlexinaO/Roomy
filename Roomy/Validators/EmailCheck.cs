@@ -15,11 +15,11 @@ namespace Roomy.Validators
             var db = (RoomyDbContext)validationContext.GetService(typeof(RoomyDbContext));
             if(!string.IsNullOrWhiteSpace(value?.ToString()))
             {
-                var user = db.Users.SingleOrDefaultAsync(x => x.Mail == value.ToString());
+                var user = db.Users.SingleOrDefault(x => x.Mail == value.ToString());
                 if (user == null)
                     return ValidationResult.Success;
             }
-            return null;
+            return new ValidationResult("Mail existant");
         }
     }
 }

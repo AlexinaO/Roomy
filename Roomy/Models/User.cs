@@ -28,6 +28,7 @@ namespace Roomy.Models
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
                             ErrorMessage = "Le format du mail est incorrect.")]
+        [EmailCheck]
         public string Mail { get; set; }
 
         [Required(ErrorMessageResourceName = "required", ErrorMessageResourceType = typeof(Resource))]
@@ -46,7 +47,7 @@ namespace Roomy.Models
         [DateCompare(18, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "major")]
         public DateTime? BirthDate { get; set; }
 
-
+        public ICollection<Room> Rooms { get; set; }
 
     }
 }

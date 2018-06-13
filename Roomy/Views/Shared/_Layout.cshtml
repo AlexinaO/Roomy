@@ -1,6 +1,12 @@
 ﻿
 @{
     Layout = null;
+    Roomy.Controllers.Display display = null;
+    if (TempData["Display"] != null)
+    {
+        display = Newtonsoft.Json.JsonConvert.DeserializeObject<Roomy.Controllers.Display>(TempData["Display"]?.ToString());
+    }
+
 }
 
 <!DOCTYPE html>
@@ -38,7 +44,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a asp-controller="users" asp-action="create">S'inscrire <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>
+                    <li><a asp-controller="Dashboard" asp-action="index" asp-area="Backoffice">Backoffice</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -74,6 +80,14 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
+    @if(display != null)
+    {
+        <div class="alert alert-@(display.Type == Roomy.Controllers.MessageType.OK ? "success" : "danger")">
+            @display.Message
+        </div>
+
+    }
 
     <div class="container">
         @RenderBody()

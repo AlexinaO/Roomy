@@ -63,10 +63,11 @@ namespace Roomy
                     uiCulture: "en-US") //this.Configuration.GetSection("languages")["langue"])
             });
 
-            app.Use(async(context, next) => {
+            app.Use(async (context, next) =>
+            {
                 var statusCode = context.Request.Query["statuscode"];
                 Debug.WriteLine($"Code: {statusCode}");
-                if(!string.IsNullOrWhiteSpace(statusCode))
+                if (!string.IsNullOrWhiteSpace(statusCode))
                 {
                     await Task.FromResult(0);
                 }
@@ -92,6 +93,10 @@ namespace Roomy
                 name: "apropos",
                 template: "a-propos-de",
                 defaults: new { controller = "Home", action = "About" });
+
+            routeBuilder.MapRoute(
+                name: "areas",
+                template: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
             routeBuilder.MapRoute(
                 name: "Default",
