@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -78,7 +79,7 @@ namespace Roomy.Areas.Backoffice.Controllers
                 return NotFound();
             }
 
-            var room = await _context.Rooms.SingleOrDefaultAsync(m => m.ID == id);
+            var room = await _context.Rooms.Include(x => x.Files).SingleOrDefaultAsync(m => m.ID == id);
             if (room == null)
             {
                 return NotFound();
@@ -159,5 +160,30 @@ namespace Roomy.Areas.Backoffice.Controllers
         {
             return _context.Rooms.Any(e => e.ID == id);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFile(int id, IFormFile upload)
+        {
+            if(upload.Length > 0)
+            {
+                var file = new File
+                {
+                    ContentType = upload.ContentType,
+                    Name = System.IO.Path.GetFileName(upload.FileName),
+                    RoomID = id
+                };
+
+                using( var reader = new System.IO.BinaryReader(upload.OpenReadStream()))
+                {
+                    file.Content = reader.ReadBytes(Convert.ToInt32(upload.Length));
+                }
+
+                _context.Files.Add(file);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Edit", new { id });
+
+        }
+
     }
 }

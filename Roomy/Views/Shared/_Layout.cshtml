@@ -81,7 +81,7 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    @if(display != null)
+    @if (display != null)
     {
         <div class="alert alert-@(display.Type == Roomy.Controllers.MessageType.OK ? "success" : "danger")">
             @display.Message
@@ -94,6 +94,7 @@
     </div>
     <footer>
         &copy; Formation Asp Core Netsize
+        
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

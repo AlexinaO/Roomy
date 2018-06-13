@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Room>
+
+<div class="row">
+    @foreach (var room in Model)
+    {
+        <div class="col-md-3">
+            <div class="thumbnail">
+               <p>@room?.Label</p>
+            </div>
+        </div>
+    }
+</div>
