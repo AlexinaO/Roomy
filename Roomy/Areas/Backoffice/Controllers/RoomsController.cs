@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Roomy.Data;
+using Roomy.Filters;
 using Roomy.Models;
 
 namespace Roomy.Areas.Backoffice.Controllers
 {
     [Area("Backoffice")]
+    [AuthenticationFilter]
     public class RoomsController : Controller
     {
         private readonly RoomyDbContext _context;

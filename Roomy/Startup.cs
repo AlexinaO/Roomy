@@ -37,6 +37,9 @@ namespace Roomy
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
+            services.AddSession(options =>
+                options.IdleTimeout = TimeSpan.FromMinutes(10));
+
             services.AddMvc();
 
         }
@@ -77,6 +80,8 @@ namespace Roomy
                     await next();
                 }
             });
+
+            app.UseSession();
 
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(ConfigureRoute);
