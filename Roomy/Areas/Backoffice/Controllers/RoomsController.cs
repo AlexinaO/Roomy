@@ -187,5 +187,17 @@ namespace Roomy.Areas.Backoffice.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RemoveFile(int id)
+        {
+            var file = await _context.Files.FindAsync(id);
+            if (file == null)
+                return NotFound();
+            _context.Files.Remove(file);
+
+            await _context.SaveChangesAsync();
+            return Json(file);
+        }
+
     }
 }

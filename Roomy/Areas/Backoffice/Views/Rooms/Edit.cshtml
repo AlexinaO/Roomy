@@ -63,10 +63,16 @@
         <div class="row">
             @foreach (var file in Model.Files)
             {
-                <div class="col-md-3">
+                <div id="div-@file.ID" class="col-md-3">
                     <div class="thumbnail">
                         <image file="@file"></image>
                         @*@Html.GetImage(file)*@
+                        <p>
+                            @file.Name
+                            <a href="#" class="btn btn-danger suppr" data-id="@file.ID">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+                        </p>
                     </div>
                 </div>
             }
@@ -74,4 +80,27 @@
     </div>
 </div>
 
-
+@section SectionScripts{ 
+    <script>
+        $(document).ready(function () {
+            $("a.suppr").click(function (event) {
+                var id = $(this).data("id");
+                //alert("test " + id);
+                $.ajax({
+                    url: "@Url.Action("RemoveFile", "Rooms")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (arg) {
+                        $("#div-" + id).remove();
+                        alert("Fichier " + arg.Name + " supprimé");
+                    }/*,
+                    error: function () {
+                        alert("Erreur lors de la supression.")
+                    }*/
+                });
+                return false;
+            });
+        });
+    </script>
+}
